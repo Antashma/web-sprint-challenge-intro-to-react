@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import './App.css';
 
@@ -9,7 +10,19 @@ const App = () => {
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
+  const [pkmData, setPkmData] = useState({})
+  const [pokemon, setPokemon] = useState('gengar')
 
+  useEffect(() => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+      .then(success => {
+        console.log('got data', success)
+      })
+      .catch(error => {
+        console.log('no data found...', error)
+      })
+    }, [pokemon])
 
 
   return (
