@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import DexEntry from './DexEntry'
 // Write your Character component here
 
 const BlackHeader = styled.h2`
@@ -31,6 +32,7 @@ const Character = props => {
                 <p>{data.types[0].type.name} {!data.types[1] ? '' : ` / ${data.types[1].type.name}`}</p>
                 <p>height: {data.height} dm / weight: {data.weight} hg</p>
                 <p>version debut: {data.game_indices[0].version.name} / {data.game_indices[1].version.name} </p>
+                <DexEntry dexURL = {data.species.url}/>
             </InfoBox>
         </section>
         )
