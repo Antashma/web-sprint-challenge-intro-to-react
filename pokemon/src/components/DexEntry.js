@@ -1,5 +1,18 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
+import styled from 'styled-components'
+
+const DexBox = styled.p`
+    padding: 10px 0;
+    max-width: 500px;
+    text-align: left;
+    border-top: 1px dashed silver;
+    border-bottom: 1px dashed silver;
+`
+
+const UppercaseText = styled.span`
+    text-transform:uppercase;
+`
 
 const DexEntry = props => {
     const {dexURL} = props
@@ -17,9 +30,9 @@ const DexEntry = props => {
     , [dexURL])
     return (
         <div>
-            <p>
+            <DexBox>
             {!evolInfo ? `${dexInfo} Has no pre-evolutionary form.` : `${dexInfo} Evolves from ${evolInfo}.`} 
-            </p>
+            </DexBox>
         </div>
     )
 }
