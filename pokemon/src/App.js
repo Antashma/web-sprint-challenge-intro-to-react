@@ -12,25 +12,28 @@ const App = () => {
   // Fetch characters from the API in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
-  const [pkmData, setPkmData] = useState({})
-  const [pokemon, setPokemon] = useState('gengar')
+  const [pkmData, setPkmData] = useState([])
 
-  const dreamTeam = [
+  /* using these mons:
     'gengar', 
     'gyarados',
     'luxray'
-    // 'cryogonal', 
-    // 'steelix',
-    // 'blissey'
-  ]
+    'cryogonal', 
+    'steelix',
+    'blissey'
+  */
   
   useEffect(() => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    axios.all([
+      axios.get(`https://pokeapi.co/api/v2/pokemon/gengar`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/gyarados`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/luxray`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/cryogonal`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/steelix`),
+      axios.get(`https://pokeapi.co/api/v2/pokemon/blissey`)])
       .then(success => {
-        console.log('got data', success)
-        console.log(success.data)
-        setPkmData(success.data)
+        console.log('got data', ...success)
+        setPkmData(success)
       })
       .catch(error => {
         console.log('no data found...', error)
@@ -39,14 +42,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1 className="Header">The Dream Team</h1>
-      {/* {
-      dreamTeam.map((item) => {
-        setPokemon(item)
-        return <Character key = {pkmData.name} pkmData = {pkmData} />})
-        } */}
+      <h1 className="Header">My Pokemon Team</h1>
+      {console.log('test data', Object.values(pkmData))}
+      {
+
+      Object.values(pkmData).map((item, index) => {
+        return <Character key = {index} data = {item.data} />
+      })
+        }
     </div>
-  );
-}
+  )};
 
 export default App;

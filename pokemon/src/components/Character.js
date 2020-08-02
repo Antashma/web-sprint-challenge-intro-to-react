@@ -17,14 +17,16 @@ const SkyInfoBox = styled.div`
     font-weight:bold;
 `
 
+
 const Character = props => {
-    const {pkmData} = props
+    const {data} = props
+    console.log('data', data)
     return (
         <section className='CharacterBox'>
-            <BlackHeader>{pkmData.name} -- no. {pkmData.id}</BlackHeader>
+            <BlackHeader>{data.name} -- no. {data.id}</BlackHeader>
             <SkyInfoBox>
-                <p>height: {pkmData.height} cm / weight: {pkmData.weight * .1} kg</p>
-                <p>base exp: {pkmData.base_experience}</p>
+                <p>height:  dm / weight:  hg</p>
+                <p>base exp: </p>
             </SkyInfoBox>
         </section>
         )
