@@ -39,13 +39,11 @@ const App = () => {
         console.log('no data found...', error)
       })
     }, [])
-
+    
   return (
     <div className="App">
       <h1 className="Header">My Pokemon Team</h1>
-      {console.log('test data', Object.values(pkmData))}
-      {
-
+      { //mapping data
       Object.values(pkmData).map((item, index) => {
         return <Character key = {index} data = {item.data} />
       })
