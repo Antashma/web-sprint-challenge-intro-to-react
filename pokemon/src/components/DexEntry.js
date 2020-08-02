@@ -10,10 +10,6 @@ const DexBox = styled.p`
     border-bottom: 1px dashed silver;
 `
 
-const UppercaseText = styled.span`
-    text-transform:uppercase;
-`
-
 const DexEntry = props => {
     const {dexURL} = props
     const [dexInfo, setDexInfo] = useState(null)

@@ -24,7 +24,7 @@ const App = () => {
   */
   
   useEffect(() => {
-    axios.all([
+    Promise.all([
       axios.get(`https://pokeapi.co/api/v2/pokemon/gengar`),
       axios.get(`https://pokeapi.co/api/v2/pokemon/gyarados`),
       axios.get(`https://pokeapi.co/api/v2/pokemon/luxray`),
@@ -39,7 +39,7 @@ const App = () => {
         console.log('no data found...', error)
       })
     }, [])
-    
+
   return (
     <div className="App">
       <h1 className="Header">My Pokemon Team</h1>
